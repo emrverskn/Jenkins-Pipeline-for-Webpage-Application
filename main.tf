@@ -21,14 +21,14 @@ variable "tags" {
 }
 
 variable "user" {
-  default = "clarusway"
+  default = "*****"
 }
 
 resource "aws_instance" "managed_nodes" {
   ami = "ami-079db87dc4c10ac91"
   count = 3
   instance_type = "t2.micro"
-  key_name = "mykey"  # change with your pem file
+  key_name = "*****"  # change with your pem file
   vpc_security_group_ids = [aws_security_group.tf-sec-gr.id]
   iam_instance_profile = "jenkins-project-profile-${var.user}" # we created this with jenkins server
   tags = {
