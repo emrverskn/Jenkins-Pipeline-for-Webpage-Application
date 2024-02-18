@@ -13,5 +13,5 @@ variable "jenkins-sg" {
 }
 
 variable "user" {
-  default = "merve"
+  default = "clarusway"
 }
