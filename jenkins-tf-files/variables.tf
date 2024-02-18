@@ -1,5 +1,5 @@
 variable "mykey" {
-  default = "mykey"
+  default = "*****"
 }
 
 variable "instancetype" {
@@ -13,5 +13,5 @@ variable "jenkins-sg" {
 }
 
 variable "user" {
-  default = "clarusway"
+  default = "*****"
 }
