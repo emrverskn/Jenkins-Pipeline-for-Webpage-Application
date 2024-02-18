@@ -7,7 +7,7 @@ terraform {
   }
   backend "s3" {
     bucket = "jenkins-project-backend-mrv"
-    key = "backend/tf-backend-jenkins.tfstate"
+    key    = "backend/tf-backend-jenkins.tfstate"
     region = "us-east-1"
   }
 }
@@ -25,15 +25,15 @@ variable "user" {
 }
 
 resource "aws_instance" "managed_nodes" {
-  ami = "ami-079db87dc4c10ac91"
-  count = 3
-  instance_type = "t2.micro"
-  key_name = "mykey"  # change with your pem file
+  ami                    = "ami-079db87dc4c10ac91"
+  count                  = 3
+  instance_type          = "t2.micro"
+  key_name               = "mykey"  # change with your pem file
   vpc_security_group_ids = [aws_security_group.tf-sec-gr.id]
-  iam_instance_profile = "jenkins-project-profile-${var.user}" # we created this with jenkins server
+  iam_instance_profile   = "jenkins-project-profile-${var.user}" # we created this with jenkins server
   tags = {
-    Name = "ansible_${element(var.tags, count.index )}"
-    stack = "ansible_project"
+    Name        = "ansible_${element(var.tags, count.index)}"
+    stack       = "ansible_project"
     environment = "development"
   }
   user_data = <<-EOF
@@ -75,14 +75,14 @@ resource "aws_security_group" "tf-sec-gr" {
 
   egress {
     from_port   = 0
-    protocol    = -1
+    protocol    = "-1"
     to_port     = 0
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
 
 output "react_ip" {
-  value = "http://${aws_instance.managed_nodes[2].public_ip}:3000"
+  value = "${aws_instance.managed_nodes[2].public_ip}:3000"
 }
 
 output "node_public_ip" {
