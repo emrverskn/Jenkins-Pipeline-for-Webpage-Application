@@ -105,7 +105,7 @@
         ports:
           - "5432:5432"
         env:
-          POSTGRES_PASSWORD: "Pp123456789"
+          POSTGRES_PASSWORD: "*****"
         volumes:
           - /db-data:/var/lib/postgresql/data
 
