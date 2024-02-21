@@ -114,7 +114,7 @@
   become: true
   vars:
     container_name: mrv_nodejs
-    image_name: 952813204183.dkr.ecr.us-east-1.amazonaws.com/clarusway-repo/cw-todo-app:nodejs
+    image_name: <account.id>.dkr.ecr.us-east-1.amazonaws.com/clarusway-repo/cw-todo-app:nodejs
   tasks:
     - name: remove postgre container
       community.docker.docker_container:
